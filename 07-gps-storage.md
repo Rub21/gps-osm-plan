@@ -2,8 +2,8 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                    DATOS GPS ACTUALES                            │
-│                                                                  │
+│                    DATOS GPS ACTUALES                           │
+│                                                                 |
 │  ┌──────────────────┐  ┌──────────────────┐  ┌───────────────┐  │
 │  │     AWS S3       │  │   PostgreSQL     │  │  Tile Server  │  │
 │  │                  │  │                  │  │  (muirdris)   │  │
@@ -15,7 +15,6 @@
 │  │ descarga usuario │  │ API trackpoints  │  │ Propósito:    │  │
 │  │                  │  │                  │  │ tiles PNG     │  │
 │  └──────────────────┘  └──────────────────┘  └───────────────┘  │
-│                                                                  │
-│  ⚠️  La tabla tracepoints es el cuello de botella de backups     │
+│                                                                 |
 └─────────────────────────────────────────────────────────────────┘
 ```
