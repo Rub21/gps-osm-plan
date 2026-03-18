@@ -1,9 +1,5 @@
 # GET /api/0.6/trackpoints - How it works
 
-Documentation of the current trackpoints endpoint for the GPS traces discussion with Pablo.
-
----
-
 ## 1. Request
 
 ```
@@ -199,19 +195,3 @@ Esto **no son cursores de base de datos** (como `pg_fetch_row` en PHP). No se pe
 - **Max bbox size**: 0.25 grados cuadrados.
 - **API timeout**: 300 segundos (5 minutos).
 - **No hay rate limiting** especifico para este endpoint, solo el timeout general del API.
-
----
-
-## 9. Files involved
-
-| File | What it does |
-|------|-------------|
-| [config/routes.rb:90](https://github.com/openstreetmap/openstreetmap-website/blob/master/config/routes.rb#L90) | Route definition |
-| [app/controllers/api/tracepoints_controller.rb](https://github.com/openstreetmap/openstreetmap-website/blob/master/app/controllers/api/tracepoints_controller.rb) | Controller con OFFSET pagination |
-| [app/models/tracepoint.rb](https://github.com/openstreetmap/openstreetmap-website/blob/master/app/models/tracepoint.rb) | Model que mapea a la tabla `gps_points` |
-| [app/models/trace.rb](https://github.com/openstreetmap/openstreetmap-website/blob/master/app/models/trace.rb) | Model del GPX file (tabla `gpx_files`) |
-| [app/models/concerns/geo_record.rb](https://github.com/openstreetmap/openstreetmap-website/blob/master/app/models/concerns/geo_record.rb) | SCALE constant, bbox scope, conversion lat/lon |
-| [app/views/api/tracepoints/index.gpx.builder](https://github.com/openstreetmap/openstreetmap-website/blob/master/app/views/api/tracepoints/index.gpx.builder) | Template GPX 1.0 XML |
-| [lib/osm.rb:522-528](https://github.com/openstreetmap/openstreetmap-website/blob/master/lib/osm.rb#L522-L528) | sql_for_area() - QuadTile + range check |
-| [lib/bounding_box.rb](https://github.com/openstreetmap/openstreetmap-website/blob/master/lib/bounding_box.rb) | BoundingBox validation |
-| [config/settings.yml:33](https://github.com/openstreetmap/openstreetmap-website/blob/master/config/settings.yml#L33) | tracepoints_per_page: 5000 |

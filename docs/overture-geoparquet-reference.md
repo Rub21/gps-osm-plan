@@ -42,11 +42,3 @@ So they don't need to handle:
 - Concurrent writes
 
 That is exactly why they can use files instead of a database. The data is static between releases.
-
-## Links
-
-- Overture data access: https://docs.overturemaps.org/getting-data/
-- Transportation guide: https://docs.overturemaps.org/guides/transportation/
-- Cloud sources: https://docs.overturemaps.org/getting-data/cloud-sources/
-- Overture data on AWS: https://registry.opendata.aws/overture/
-- Why they chose GeoParquet: https://overturemaps.org/blog/2025/why-we-chose-geoparquet-breaking-down-data-silos-at-overture-maps/

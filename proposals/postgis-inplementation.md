@@ -37,7 +37,7 @@ The `tile` column already helps: points close on the map get similar tile number
 
 ### Idea A: add a PostGIS geometry column (keep individual points)
 
-Pablo mentioned this in the call — instead of storing the 31B rows as plain integers, we could convert each point to a PostGIS geometry object. Bbox queries would then use a GIST index, which could be a bit faster. He was not certain though — his words were "el performance sería un poco mejor todavía pienso".
+Pablo mentioned this in the call — instead of storing the 31B rows as plain integers, we could convert each point to a PostGIS geometry object. Bbox queries would then use a GIST index, which could be a bit faster.
 
 The idea is to add a `geom` column with a GIST index:
 
@@ -100,7 +100,7 @@ WHERE ST_Crosses(
 **Cons:**
 - `ST_Crosses` only works when the trace crosses the bbox border — also need `ST_Contains` for traces fully inside the bbox.
 - JOSM and iD expect individual points, not LineStrings. The query would need to convert the LineString back to points, in SQL or in Rails.
-- If I want to store altitude and timestamp per point I would need `LINESTRINGZM` — Pablo noted this was unexpected and adds complexity.
+- If I want to store altitude and timestamp per point I would need `LINESTRINGZM` 
 - Disk size does not improve much — the same coordinates are stored, just in a different structure. A `LINESTRINGZM` could even be slightly larger due to object overhead.
 - Migration is complex: I would need to group 31B rows by trace and build a LineString per trace — could take several weeks.
 
