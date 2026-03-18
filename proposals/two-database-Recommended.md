@@ -1,4 +1,4 @@
-## Move GPS tables to a separate database
+## Move GPS tables to a separate database - Recommended 
 
 **Status:** Idea — mentioned by Pablo and Grant
 
